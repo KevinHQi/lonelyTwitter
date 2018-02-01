@@ -24,6 +24,15 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ *  Represent a lonely tweet activity
+ *
+ *  @author sheilaschoepp
+ *  @version 1.5
+ *  @see NormalTweet
+ *  @see ImportantTweet
+ *  @see Tweet
+ */
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "tweets.sav";
@@ -35,6 +44,9 @@ public class LonelyTwitterActivity extends Activity {
 	
 	/** Called when the activity is first created. */
 	@Override
+	/**
+	 *  Create things need for the app
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i("LifeCycle ---->", "onCreate is called");
@@ -44,6 +56,9 @@ public class LonelyTwitterActivity extends Activity {
 		Button saveButton = (Button) findViewById(R.id.save);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
+		/**
+		 * Make save button work
+		 */
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -61,6 +76,9 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 	@Override
+	/**
+	 * App starts working
+	 */
 	protected void onStart() {
 
 		// TODO Auto-generated method stub
@@ -75,6 +93,9 @@ public class LonelyTwitterActivity extends Activity {
 
 	}
 
+	/**
+	 * Try to load info from file
+	 */
 	private void loadFromFile() {
 
 		try {
@@ -95,7 +116,10 @@ public class LonelyTwitterActivity extends Activity {
 		}
 
 	}
-	
+
+	/**
+	 * Save tweets into local file
+	 */
 	private void saveInFile() {
 		try {
 
@@ -117,11 +141,19 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 	@Override
+	/**
+	 * When app done it's job
+	 */
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.i("Lifecycle", "onDestroy is called");
 	}
 
+	/**
+	 * clear button
+	 *
+	 * @param view
+	 */
 	public void clear(View view){
 		loadFromFile();
 		tweetList.clear();
